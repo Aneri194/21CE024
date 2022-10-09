@@ -1,37 +1,71 @@
 //21CE024_Aneri
-package Assignment3;
-	interface p{
-	      final int p=100;
-	      void show1();
+package Assignment;
+import java.util.*;
+class Account_1 
+{
+	double balance = 100;
+	int[] Acco = new int[10];
+	void data() 
+	{
+		System.out.println();
+		System.out.println("1.Deposit");
+		System.out.println("2.Widthdraw");
+		System.out.println("3.GetMonthlyInterestRate");
+		System.out.println();
 	}
-	interface p1 extends p{
-	   final int p1=200;
-	   void show2();
+}
+class pr3 
+{
+	public static void main(String[] args) 
+	{
+		Account_1 a = new Account_1();
+		Account ac = new Account();
+		try (Scanner sc = new Scanner(System.in)) 
+		{
+			int i;
+			for (i = 0; i < a.Acco.length; i++) 
+			{
+				a.Acco[i] = i;
+			}
+			System.out.println("Enter Your Account Number :  ");
+			int k = sc.nextInt();
+			if (k != a.Acco[i]) 
+			{
+				System.out.println("Please Enter A Valid ID*");
+			} 
+			else 
+			{
+				System.out.println("*******Welcome To A.R.INTELLIGENCE BANK******");
+				System.out.println();
+				System.out.println("The Account Creation Date is : ");
+				System.out.println(ac.date.toString());
+				System.out.println();
+				a.data();
+				for (int j = 1; j >= 1; j++) 
+				{
+					System.out.println("Enter Your Input : ");
+					int m = sc.nextInt();
+					switch (m) 
+					{
+                     	case 1:
+                         ac.deposit();
+                         a.data();
+                         continue;
+                     	case 2:
+                         ac.withdraw();
+                         a.data();
+                         continue;
+                     	case 3:
+                         ac.getMonthlyInterestRate();
+                         a.data();
+                         continue;
+                         case 99:
+                         break;
+                        default:
+                         System.out.println(":: 404 The Error Accurs ::");
+					}
+				}
+			}
+		}
 	}
-	interface p2 extends p{
-	    final int p2=300;
-	     void show3(); 
-	}
-	interface p12 extends p1,p2{
-	    final int p12=400;
-	    void show4();
-	}
-	class pr_3 implements p12 {
-	    @Override
-	    public void show1() {
-	        System.out.println(p);
-	    }
-	    @Override
-	    public void show2() {
-	        System.out.println(p1);
-	    }
-	    @Override
-	    public void show3() {
-	        System.out.println(p2);
-	    }
-	    @Override
-	    public void show4() {
-	        System.out.println(p12);
-	    }
-	}
-
+}

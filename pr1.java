@@ -1,135 +1,96 @@
 //21CE024_Aneri
-package Assignment3;
+package Assignment;
 import java.util.*;
-abstract class GeomatricObject {
-    Scanner sc=new Scanner(System.in);
-    public String color;
-    public Boolean filled;
-    //private Date dateCreated;
-    abstract double getArea();
-    abstract double getPerimeter();
-    protected GeomatricObject()
-    {}
-    protected GeomatricObject(String c,boolean f)
-    {
-        color=c;
-        filled=f;
-    }
-    boolean isfilled()
-    {
-        return filled;
-    }
-    public void setFilled(boolean filled){
-        this.filled=filled;
-        
-    }
-    public String getColor()
-    {
-         return color;
-    }
-    public void setColor(String color)
-    {
-         this.color=color;
-    }
-
-}
-class circle extends GeomatricObject
+class Account 
 {
-    private double radius;
-    Scanner sc=new Scanner(System.in);
-    public circle(){radius=0;}
-    public circle(double radius,String color,boolean filled)
-    {
-        this.radius=radius;
-        this.color=color;
-        this.filled=filled;
-    }
-    @Override
-    public void setColor(String color) {
-        // TODO Auto-generated method stub
-        super.setColor(color);
-    }
-    @Override
-    public void setFilled(boolean filled) {
-        // TODO Auto-generated method stub
-        super.setFilled(filled);
-    }
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-    public double getRadius() {
-        return radius;
-    }
-    double getArea()
-    {
-        return (3.14)*radius*radius;
-    }
-    double getPerimeter()
-    {
-        return 2*3.14*radius;
-    }
+	int id = 0;
+	static double balance = 500;
+	double annualInterestRate = 0;
+	Date date = new Date();
+	Scanner sc = new Scanner(System.in);
+	Account() 
+	{
+		String uniqueID = UUID.randomUUID().toString();
+		System.out.println("The Account Number is : " + uniqueID);
+		System.out.println("Your Account balance is : " + balance);
+	}
+	void getMonthlyInterestRate() 
+	{
+		double k = 4.9 / 12;
+		System.out.println("The Monthly Interest Rate is : " + k);
+	}
+	void withdraw() 
+	{
+		System.out.println("Enter the Amount you want to Withdraw : ");
+		double with = sc.nextDouble();
+		if (with > balance) 
+		{
+			System.out.println("Account have insufficient balance!!!");
+		} 
+		else 
+		{
+			balance = balance - with;
+			System.out.println("The updated balnce is : " + balance);
+		}
+	}
+	void deposit() 
+	{
+		System.out.println("Enter the Amount you want to Deposit : ");
+		double depo = sc.nextDouble();
+		balance = balance + depo;
+		System.out.println("The updated balnce is : " + balance);
+	}
+	void data() 
+	{
+		System.out.println();
+		System.out.println("1.Deposit");
+		System.out.println("2.Widthdraw");
+		System.out.println("3.GetMonthlyInterestRate");
+		System.out.println();
+	}
+	public Double getBalance() 
+	{
+		return balance;
+	}
+	public int getId() 
+	{
+		return 0;
+	}
 }
-class rectangle extends GeomatricObject
+public class pr1 
 {
-    Scanner sc=new Scanner(System.in);
-    private double width;
-    private double height;
-    public rectangle()
-    {
-        width=0;
-        height=0;
-    }
-    public rectangle(double width,double height)
-    {
-        this.width=width;
-        this.height=height;
-    }
-    public rectangle(double width,double height,String color,boolean filled)
-    {
-        this.width=width;
-        this.height=height;
-        this.color=color;
-        this.filled=filled;
-    }
-    @Override
-    public String getColor() {
-        // TODO Auto-generated method stub
-        return super.getColor();
-    }
-    @Override
-    public void setColor(String color) {
-        // TODO Auto-generated method stub
-        super.setColor(color);
-    }
-    @Override
-    public void setFilled(boolean filled) {
-        // TODO Auto-generated method stub
-        super.setFilled(filled);
-    }
-    @Override
-    boolean isfilled() {
-        // TODO Auto-generated method stub
-        return super.isfilled();
-    }
-    public double getHeight() {
-        return height;
-    }
-    public void setHeight(double height) {
-        this.height = height;
-    }
-    public double getWidth() {
-        return width;
-    }
-    public void setWidth(double width) {
-        this.width = width;
-    }
-    public double getArea()
-    {
-        
-        return height*width;
-    }
-    public double getPerimeter()
-    {
-        return 2*(height+width);
-    }
+	public static void main(String[] args) 
+	{
+		Scanner t = new Scanner(System.in);
+		Account a = new Account();
+		System.out.println("*******Welcome To A.R.INTELLIGENCE BANK******");
+		System.out.println();
+		System.out.println("The Account Creation Date is : ");
+		System.out.println(a.date.toString());
+		System.out.println();
+		a.data();
+		for (int i = 1; i >= 1; i++) 
+		{
+			System.out.println("Enter Your Input : ");
+			int k = t.nextInt();
+			switch (k) 
+			{
+             	case 1:
+                 a.deposit();
+                 a.data();
+                 continue;
+             	case 2:
+                 a.withdraw();
+                 a.data();
+                 continue;
+             	case 3:
+                 a.getMonthlyInterestRate();
+                 a.data();
+                 continue;
+             	default:
+                 System.out.println(":: 404 The Error Accurs ::");
+			}
+		}
+		t.close();
+	}
 }

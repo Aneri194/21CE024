@@ -1,22 +1,38 @@
 //21CE024_Aneri
-package Assignment3;
-interface A
+package Assignment;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+class pr7 
 {
-public void Details();
-default void Address()
-{
-System.out.println("Address :-\nB-8,Kaushaliya Park Society,\nGandevi Road,\nJamalpore,\nNavsari-396445");
-}
-}
-public class pr7 implements A
-{
-public void Details()
-{
-System.out.println("Details:-");
-System.out.println("Name : Aneri Desai");
-System.out.println("ID No. : 21CE024");
-System.out.println("Collage name : CSPIT");
-System.out.println("Branch : Computer Engineering");
-System.out.println("Current Sem. : 3");
-}
+	File readInFile = new File("text.txt");
+	int readFileme(String line, File file) 
+	{
+		if (readInFile.exists()) 
+		{
+			return line.length();
+		} 
+		else 
+		{
+			return -1;
+		}
+	}	
+	public static void main(String[] args) throws IOException 
+	{
+		String str = "File Handling in Java using " + " FileWriter and FileReader";
+		FileWriter writeInFile = new FileWriter("text.txt");
+		for (int i = 0; i < str.length(); i++)
+        writeInFile.write(str.charAt(i));
+		System.out.println("Writing successful");
+		writeInFile.close();
+		int ch;
+		FileReader readInFile = new FileReader("text.txt");
+		System.out.println("File created SucessFully");
+		FileReader readInFileReader = null;
+		System.out.println("File is found");
+		while ((ch = readInFile.read()) != -1)
+        System.out.print((char) ch);
+		readInFile.close();
+	}
 }
